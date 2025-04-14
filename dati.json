@@ -1,23 +1,12 @@
 {
   "Under 17": {
-    "partite": []
-  },
-  "Under 15": {
-    "partite": []
-  },
-  "Under 13": {
-    "partite": []
-  },
-  "2014/15": {
-    "partite": []
-  },
-  "2016/17": {
-    "partite": []
-  },
-  "Under 15 femminile": {
-    "partite": []
-  },
-  "Under 13 femminile": {
-    "partite": []
+    "partite": [
+      {
+        "data": "2025-05-09",
+        "girone": "A",
+        "squadraA": "Mirafin",
+        "squadraB": "Ardea"
+      }
+    ]
   }
 }
