@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Torneo Pubblico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>🏆 Torneo <span id="categoria"></span></h1>
+    <div class="tabs">
+      <button onclick="mostraTab('calendario')">📅 Calendario</button>
+      <button onclick="mostraTab('classifica')">🏆 Classifica</button>
+      <button onclick="mostraTab('risultati')">📖 Risultati</button>
+    </div>
+    <div id="tab-calendario" class="tab-content active"></div>
+    <div id="tab-classifica" class="tab-content"></div>
+    <div id="tab-risultati" class="tab-content"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
