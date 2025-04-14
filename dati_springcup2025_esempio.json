@@ -1,0 +1,102 @@
+{
+  "Under 17": {
+    "partite": [
+      {
+        "data": "2025-05-09",
+        "orario": "19:00",
+        "campo": "Campo A",
+        "girone": "A",
+        "squadraA": "MIRAFIN",
+        "golA": 2,
+        "squadraB": "ECOCITY",
+        "golB": 1,
+        "portiere": "Marco Rossi",
+        "giocatore": "Luca Bianchi",
+        "marcatori": [
+          {
+            "nome": "Giovanni Verdi",
+            "squadra": "MIRAFIN",
+            "gol": 2
+          },
+          {
+            "nome": "Andrea Neri",
+            "squadra": "ECOCITY",
+            "gol": 1
+          }
+        ]
+      }
+    ],
+    "gironi": {
+      "A": [
+        "MIRAFIN",
+        "ECOCITY",
+        "FORTITUDO"
+      ],
+      "B": [
+        "GENZANO",
+        "SAN GIOVANNI",
+        "LATINA"
+      ]
+    }
+  },
+  "Under 15": {
+    "partite": [
+      {
+        "data": "2025-05-11",
+        "orario": "20:00",
+        "campo": "Campo B",
+        "girone": "A",
+        "squadraA": "NEW TEAM",
+        "golA": 3,
+        "squadraB": "ROMA C5",
+        "golB": 3,
+        "portiere": "Lorenzo Blu",
+        "giocatore": "Franco Viola",
+        "marcatori": [
+          {
+            "nome": "Luigi Rossi",
+            "squadra": "NEW TEAM",
+            "gol": 2
+          },
+          {
+            "nome": "Mario Bianchi",
+            "squadra": "ROMA C5",
+            "gol": 3
+          },
+          {
+            "nome": "Luigi Rossi",
+            "squadra": "NEW TEAM",
+            "gol": 1
+          }
+        ]
+      }
+    ],
+    "gironi": {
+      "A": [
+        "NEW TEAM",
+        "ROMA C5",
+        "LAZIO C5"
+      ]
+    }
+  },
+  "Under 13": {
+    "partite": [],
+    "gironi": {}
+  },
+  "2014/15": {
+    "partite": [],
+    "gironi": {}
+  },
+  "2016/17": {
+    "partite": [],
+    "gironi": {}
+  },
+  "Under 15 femminile": {
+    "partite": [],
+    "gironi": {}
+  },
+  "Under 13 femminile": {
+    "partite": [],
+    "gironi": {}
+  }
+}
