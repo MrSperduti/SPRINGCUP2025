@@ -1,32 +1,12 @@
 {
   "Under 17": {
-    "partite": [
-      {
-        "data": "2025-10-09",
-        "girone": "A",
-        "squadraA": "Academy",
-        "squadraB": "Ardea"
-      },
-      {
-        "data": "2025-10-09",
-        "girone": "B",
-        "squadraA": "New Team",
-        "squadraB": "Latina"
-      }
-    ]
+    "partite": []
   },
   "Under 15": {
     "partite": []
   },
   "Under 13": {
-    "partite": [
-      {
-        "data": "2025-05-10",
-        "girone": "A",
-        "squadraA": "Academy",
-        "squadraB": "Ferratella"
-      }
-    ]
+    "partite": []
   },
   "2014/15": {
     "partite": []

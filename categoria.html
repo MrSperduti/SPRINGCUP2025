@@ -56,7 +56,7 @@ fetch("dati.json")
     if (gironi.length === 0) {
       ul.innerHTML = "<li>Nessun girone disponibile</li>";
     } else {
-      ul.innerHTML = gironi.map(g => `<li>Girone ${g}</li>`).join("");
+      ul.innerHTML = gironi.map(g => `<li><a href="girone.html?categoria=${encodeURIComponent(categoria)}&girone=${encodeURIComponent(g)}">Girone ${g}</a></li>`).join("");
     }
   });
 </script>

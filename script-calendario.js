@@ -20,6 +20,11 @@ fetch('dati.json').then(r => r.json()).then(data => {
   div.innerHTML = "";
   for (let g in perGirone) {
     div.innerHTML += `<h3>Girone ${g}</h3><ul>` +
-      perGirone[g].map(p => `<li>${p.data}: ${p.squadraA} vs ${p.squadraB}</li>`).join("") + "</ul>";
+      perGirone[g].map(p => {
+        const data = p.data || "";
+        const orario = p.orario ? `⏰ ${p.orario}` : "";
+        const campo = p.campo ? `🏟️ ${p.campo}` : "";
+        return `<li>📅 ${data} ${orario} ${campo}: ${p.squadraA} vs ${p.squadraB}</li>`;
+      }).join("") + "</ul>";
   }
 });
