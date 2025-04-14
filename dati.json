@@ -1,23 +1,55 @@
 {
   "Under 17": {
-    "partite": []
+    "partite": [
+      {
+        "data": "2025-05-09",
+        "orario": "19:00",
+        "campo": "CAMPO A",
+        "girone": "A",
+        "squadraA": "MIRAFIN",
+        "squadraB": "ECOCITY",
+        "golA": null,
+        "golB": null,
+        "portiere": "",
+        "giocatore": ""
+      }
+    ],
+    "gironi": {
+      "a": [
+        "Mirafin",
+        "Fortitudo",
+        "Latina"
+      ],
+      "b": [
+        "Genzano",
+        "San Giovanni",
+        "Latina"
+      ],
+      "A": []
+    }
   },
   "Under 15": {
-    "partite": []
+    "partite": [],
+    "gironi": {}
   },
   "Under 13": {
-    "partite": []
+    "partite": [],
+    "gironi": {}
   },
   "2014/15": {
-    "partite": []
+    "partite": [],
+    "gironi": {}
   },
   "2016/17": {
-    "partite": []
+    "partite": [],
+    "gironi": {}
   },
   "Under 15 femminile": {
-    "partite": []
+    "partite": [],
+    "gironi": {}
   },
   "Under 13 femminile": {
-    "partite": []
+    "partite": [],
+    "gironi": {}
   }
 }
