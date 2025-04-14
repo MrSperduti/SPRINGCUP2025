@@ -16,7 +16,7 @@ body {
 h1, h2 {
   text-align: center;
 }
-categorie {
+.categorie {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -29,6 +29,7 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  min-width: 200px;
 }
 .tab-content {
   margin-top: 20px;
