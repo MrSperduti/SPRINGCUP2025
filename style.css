@@ -15,6 +15,7 @@ body {
 }
 h1, h2, h3 {
   text-align: center;
+  color: #c62828;
 }
 .categorie {
   display: flex;
@@ -32,11 +33,16 @@ h1, h2, h3 {
 }
 button {
   padding: 10px;
-  background-color: #eee;
+  background-color: #1565c0;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   min-width: 200px;
+  font-weight: bold;
+}
+button:hover {
+  background-color: #0d47a1;
 }
 .tab-content {
   margin-top: 20px;
@@ -49,4 +55,9 @@ th, td {
   border: 1px solid #ccc;
   padding: 6px;
   text-align: center;
+}
+img.logo {
+  display: block;
+  margin: auto;
+  max-width: 150px;
 }
