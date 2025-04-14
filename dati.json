@@ -12,6 +12,30 @@
         "golB": null,
         "portiere": "",
         "giocatore": ""
+      },
+      {
+        "data": "2025-05-12",
+        "orario": "20:00",
+        "campo": "Campo A",
+        "girone": "B",
+        "squadraA": "Genzano",
+        "squadraB": "San Giovanni",
+        "golA": 3,
+        "golB": 1,
+        "portiere": "Pluto",
+        "giocatore": "Ciccio",
+        "marcatori": [
+          {
+            "nome": "Ciccio",
+            "squadra": "Genzano",
+            "gol": 3
+          },
+          {
+            "nome": "Pippo",
+            "squadra": "San Giovanni",
+            "gol": 1
+          }
+        ]
       }
     ],
     "gironi": {
@@ -25,7 +49,6 @@
         "San Giovanni",
         "Latina"
       ],
-      "A": [],
       "c": [
         "3z",
         "Roma C5",
