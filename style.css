@@ -13,7 +13,7 @@ body {
   margin-top: 20px;
   border-radius: 10px;
 }
-h1, h2 {
+h1, h2, h3 {
   text-align: center;
 }
 .categorie {
@@ -22,6 +22,13 @@ h1, h2 {
   gap: 10px;
   margin-top: 20px;
   align-items: center;
+}
+.tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 button {
   padding: 10px;
