@@ -2,22 +2,37 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Torneo Pubblico</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>SPRING CUP 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="style.css" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
-    <h1>🏆 Torneo <span id="categoria"></span></h1>
-    <div class="tabs">
-      <button onclick="mostraTab('calendario')">📅 Calendario</button>
-      <button onclick="mostraTab('classifica')">🏆 Classifica</button>
-      <button onclick="mostraTab('risultati')">📖 Risultati</button>
+    <h1>🏆 SPRING CUP 2025</h1>
+    <div id="home">
+      <h2>Scegli una categoria:</h2>
+      <div class="categorie" id="categorieContainer"></div>
     </div>
-    <div id="tab-calendario" class="tab-content active"></div>
-    <div id="tab-classifica" class="tab-content"></div>
-    <div id="tab-risultati" class="tab-content"></div>
+
+    <div id="categoria" style="display:none;">
+      <h2 id="titoloCategoria"></h2>
+      <div class="tabs">
+        <button onclick="mostraTab('calendario')">📅 Calendario</button>
+        <button onclick="mostraTab('classifica')">🏆 Classifiche Gironi</button>
+        <button onclick="mostraTab('risultati')">📖 Risultati</button>
+        <button onclick="mostraTab('capocannonieri')">🎯 Capocannonieri</button>
+        <button onclick="mostraTab('giocatori')">👑 Miglior Giocatore</button>
+        <button onclick="mostraTab('portieri')">🧤 Miglior Portiere</button>
+        <button onclick="tornaHome()">🔙 Torna alla Home</button>
+      </div>
+      <div id="tab-calendario" class="tab-content"></div>
+      <div id="tab-classifica" class="tab-content"></div>
+      <div id="tab-risultati" class="tab-content"></div>
+      <div id="tab-capocannonieri" class="tab-content"></div>
+      <div id="tab-giocatori" class="tab-content"></div>
+      <div id="tab-portieri" class="tab-content"></div>
+    </div>
   </div>
   <script src="script.js"></script>
 </body>
