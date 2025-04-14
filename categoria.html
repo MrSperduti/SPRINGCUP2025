@@ -18,8 +18,13 @@
       <button id="btnCapocannonieri">🎯 Capocannonieri</button>
       <button id="btnPortieri">🧤 Miglior Portiere</button>
       <button id="btnGiocatori">👑 Miglior Giocatore</button>
+    
+    <div id="listaGironi" style="margin-top:20px;text-align:center;">
+      <h3>📋 Gironi presenti</h3>
+      <ul id="elencoGironi"></ul>
     </div>
     <div style="text-align:center;margin-top:20px;">
+
       <a href="index.html"><button>🔙 Torna alla Home</button></a>
     </div>
   </div>
@@ -40,6 +45,21 @@
       window.location.href = `portieri.html?categoria=${encodeURIComponent(categoria)}`;
     document.getElementById("btnGiocatori").onclick = () =>
       window.location.href = `giocatori.html?categoria=${encodeURIComponent(categoria)}`;
-  </script>
+  
+// Carica e mostra i gironi presenti nella categoria
+fetch("dati.json")
+  .then(r => r.json())
+  .then(data => {
+    const partite = data[categoria]?.partite || [];
+    const gironi = [...new Set(partite.map(p => p.girone).filter(Boolean))];
+    const ul = document.getElementById("elencoGironi");
+    if (gironi.length === 0) {
+      ul.innerHTML = "<li>Nessun girone disponibile</li>";
+    } else {
+      ul.innerHTML = gironi.map(g => `<li>Girone ${g}</li>`).join("");
+    }
+  });
+</script>
+
 </body>
 </html>
