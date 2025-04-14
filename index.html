@@ -27,6 +27,9 @@
           btn.onclick = () => window.location.href = `calendario.html?categoria=${encodeURIComponent(cat)}`;
           container.appendChild(btn);
         }
+      })
+      .catch(error => {
+        document.getElementById("categorieContainer").innerHTML = "<p style='color:red;'>Errore nel caricamento di dati.json</p>";
       });
   </script>
 </body>
