@@ -16,11 +16,12 @@ body {
 h1, h2 {
   text-align: center;
 }
-.categorie {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+categorie {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
   margin-top: 20px;
+  align-items: center;
 }
 button {
   padding: 10px;
