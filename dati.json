@@ -1,20 +1,23 @@
 {
+  "Under 17": {
+    "partite": []
+  },
   "Under 15": {
-    "partite": [
-      {
-        "data": "2025-04-10",
-        "squadraA": "Roma",
-        "golA": 2,
-        "squadraB": "Lazio",
-        "golB": 1
-      },
-      {
-        "data": "2025-04-12",
-        "squadraA": "Napoli",
-        "golA": 3,
-        "squadraB": "Inter",
-        "golB": 3
-      }
-    ]
+    "partite": []
+  },
+  "Under 13": {
+    "partite": []
+  },
+  "2014/15": {
+    "partite": []
+  },
+  "2016/17": {
+    "partite": []
+  },
+  "Under 15 femminile": {
+    "partite": []
+  },
+  "Under 13 femminile": {
+    "partite": []
   }
 }
