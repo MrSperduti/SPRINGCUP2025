@@ -1,1 +1,65 @@
-<!DOCTYPE html><html><head><title>Categoria</title><link rel='stylesheet' href='style.css'></head><body class='container'><h2 id='categoria-titolo'></h2><div id='menu'></div><script src='main.js'></script></body></html>
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Categoria - SPRING CUP 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" class="logo" alt="logo">
+    <h1 id="titoloCategoria">SPRING CUP 2025</h1>
+    <div class="tabs">
+      <button id="btnCalendario">📅 Calendario</button>
+      <button id="btnClassifica">🏆 Classifica</button>
+      <button id="btnRisultati">📖 Risultati</button>
+      <button id="btnCapocannonieri">🎯 Capocannonieri</button>
+      <button id="btnPortieri">🧤 Miglior Portiere</button>
+      <button id="btnGiocatori">👑 Miglior Giocatore</button>
+    
+    <div id="listaGironi" style="margin-top:20px;text-align:center;">
+      <h3>📋 Gironi presenti</h3>
+      <ul id="elencoGironi"></ul>
+    </div>
+    <div style="text-align:center;margin-top:20px;">
+
+      <a href="index.html"><button>🔙 Torna alla Home</button></a>
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const categoria = params.get("categoria");
+    document.getElementById("titoloCategoria").textContent = "SPRING CUP 2025 - " + categoria;
+
+    document.getElementById("btnCalendario").onclick = () =>
+      window.location.href = `calendario.html?categoria=${encodeURIComponent(categoria)}`;
+    document.getElementById("btnClassifica").onclick = () =>
+      window.location.href = `classifica.html?categoria=${encodeURIComponent(categoria)}`;
+    document.getElementById("btnRisultati").onclick = () =>
+      window.location.href = `risultati.html?categoria=${encodeURIComponent(categoria)}`;
+    document.getElementById("btnCapocannonieri").onclick = () =>
+      window.location.href = `capocannonieri.html?categoria=${encodeURIComponent(categoria)}`;
+    document.getElementById("btnPortieri").onclick = () =>
+      window.location.href = `portieri.html?categoria=${encodeURIComponent(categoria)}`;
+    document.getElementById("btnGiocatori").onclick = () =>
+      window.location.href = `giocatori.html?categoria=${encodeURIComponent(categoria)}`;
+  
+// Carica e mostra i gironi presenti nella categoria
+fetch("dati.json")
+  .then(r => r.json())
+  .then(data => {
+    const partite = data[categoria]?.partite || [];
+    const gironi = [...new Set(partite.map(p => p.girone).filter(Boolean))];
+    const ul = document.getElementById("elencoGironi");
+    if (gironi.length === 0) {
+      ul.innerHTML = "<li>Nessun girone disponibile</li>";
+    } else {
+      ul.innerHTML = gironi.map(g => `<li><a href="girone.html?categoria=${encodeURIComponent(categoria)}&girone=${encodeURIComponent(g)}">Girone ${g}</a></li>`).join("");
+    }
+  });
+</script>
+
+</body>
+</html>

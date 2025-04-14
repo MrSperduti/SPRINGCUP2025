@@ -1,74 +1,67 @@
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
   background-image: url('sfondo-calcio5.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  color: #fff;
+  font-family: sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
 h1, h2, h3 {
   text-align: center;
-  color: #ffffff;
-  text-shadow: 1px 1px 3px #000;
+  color: #c62828;
 }
-.container {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 12px;
+.categorie {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: center;
 }
-button, .category-button {
-  display: block;
-  width: 100%;
-  padding: 15px;
-  margin: 10px 0;
-  font-size: 18px;
-  background: linear-gradient(45deg, #c00, #0047ab);
+.tabs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+button {
+  padding: 10px;
+  background-color: #1565c0;
   color: white;
   border: none;
-  border-radius: 10px;
-  text-align: center;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.4);
-  transition: background 0.3s ease;
+  min-width: 200px;
+  font-weight: bold;
 }
-button:hover, .category-button:hover {
-  background: linear-gradient(45deg, #ff3333, #3366ff);
+button:hover {
+  background-color: #0d47a1;
 }
-a {
-  color: white;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+.tab-content {
+  margin-top: 20px;
 }
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  background-color: rgba(255,255,255,0.9);
-  color: #000;
-  border-radius: 8px;
-  overflow: hidden;
 }
 th, td {
-  padding: 10px;
   border: 1px solid #ccc;
+  padding: 6px;
   text-align: center;
 }
-@media screen and (max-width: 600px) {
-  h1 {
-    font-size: 24px;
-  }
-  button {
-    font-size: 16px;
-    padding: 12px;
-  }
-  table, th, td {
-    font-size: 14px;
-  }
+img.logo {
+  display: block;
+  margin: auto;
+  max-width: 150px;
 }

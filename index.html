@@ -1,1 +1,36 @@
-<!DOCTYPE html><html><head><title>SPRING CUP 2025</title><link rel='stylesheet' href='style.css'></head><body class='container'><h1>SPRING CUP 2025</h1><div id='categorie'></div><script src='main.js'></script></body></html>
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>SPRING CUP 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="logo.png" class="logo" alt="logo">
+    <h1>🏆 SPRING CUP 2025</h1>
+    <div id="home">
+      <h2>Scegli una categoria:</h2>
+      <div class="categorie" id="categorieContainer"></div>
+    </div>
+  </div>
+  <script>
+    fetch("dati.json")
+      .then(res => res.json())
+      .then(dati => {
+        const container = document.getElementById("categorieContainer");
+        for (let cat in dati) {
+          const btn = document.createElement("button");
+          btn.textContent = cat;
+          btn.onclick = () => window.location.href = `categoria.html?categoria=${encodeURIComponent(cat)}`;
+          container.appendChild(btn);
+        }
+      })
+      .catch(error => {
+        document.getElementById("categorieContainer").innerHTML = "<p style='color:red;'>Errore nel caricamento di dati.json</p>";
+      });
+  </script>
+</body>
+</html>
