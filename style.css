@@ -1,5 +1,9 @@
 
 body {
+  background-image: url('sfondo-calcio5.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   font-family: sans-serif;
   background: #f4f4f4;
   margin: 0;
@@ -58,7 +62,6 @@ th, td {
 }
 img.logo {
   display: block;
-  margin: 10px auto 20px;
-  max-width: 100px;
-  height: auto;
+  margin: auto;
+  max-width: 150px;
 }
