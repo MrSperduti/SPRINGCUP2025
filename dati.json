@@ -1,74 +1,10 @@
 {
   "Under 17": {
-    "partite": [
-      {
-        "data": "2025-05-09",
-        "orario": "19:00",
-        "campo": "CAMPO A",
-        "girone": "A",
-        "squadraA": "MIRAFIN",
-        "squadraB": "ECOCITY",
-        "golA": null,
-        "golB": null,
-        "portiere": "",
-        "giocatore": ""
-      },
-      {
-        "data": "2025-05-12",
-        "orario": "20:00",
-        "campo": "Campo A",
-        "girone": "B",
-        "squadraA": "Genzano",
-        "squadraB": "San Giovanni",
-        "golA": 3,
-        "golB": 1,
-        "portiere": "Pluto",
-        "giocatore": "Ciccio",
-        "marcatori": [
-          {
-            "nome": "Ciccio",
-            "squadra": "Genzano",
-            "gol": 3
-          },
-          {
-            "nome": "Pippo",
-            "squadra": "San Giovanni",
-            "gol": 1
-          }
-        ]
-      }
-    ],
-    "gironi": {
-      "a": [
-        "Mirafin",
-        "Fortitudo",
-        "Latina"
-      ],
-      "b": [
-        "Genzano",
-        "San Giovanni",
-        "Latina"
-      ],
-      "c": [
-        "3z",
-        "Roma C5",
-        "Lazio C5"
-      ]
-    }
+    "partite": [],
+    "gironi": {}
   },
   "Under 15": {
-    "partite": [
-      {
-        "data": "2025-05-11",
-        "orario": "20:00",
-        "campo": "Campo A",
-        "girone": "a",
-        "squadraA": "Mirafin",
-        "squadraB": "New Team",
-        "portiere": "",
-        "giocatore": ""
-      }
-    ],
+    "partite": [],
     "gironi": {}
   },
   "Under 13": {
