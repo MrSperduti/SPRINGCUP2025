@@ -58,6 +58,7 @@ th, td {
 }
 img.logo {
   display: block;
-  margin: auto;
-  max-width: 150px;
+  margin: 10px auto 20px;
+  max-width: 100px;
+  height: auto;
 }
