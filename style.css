@@ -1,0 +1,37 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #000;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+button, .category-button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 18px;
+  background: linear-gradient(45deg, #c00, #0047ab);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
