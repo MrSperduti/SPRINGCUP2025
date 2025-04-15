@@ -1,61 +1,9 @@
 {
-  "Under 17": {
-    "partite": [
-      {
-        "data": "2025-05-09",
-        "orario": "10:00",
-        "campo": "CAmpo A",
-        "girone": "A",
-        "squadraA": "Mirafin",
-        "squadraB": "Lazio",
-        "golA": 3,
-        "golB": 1,
-        "portiere": "Meladio",
-        "giocatore": "Gobbi",
-        "marcatori": [
-          {
-            "nome": "Susin",
-            "squadra": "Mirafin -3",
-            "gol": null
-          },
-          {
-            "nome": "Turco",
-            "squadra": "Lazio",
-            "gol": 1
-          }
-        ]
-      }
-    ],
-    "gironi": {
-      "A": [
-        "Mirafin",
-        "Lazio",
-        "Roma"
-      ]
-    }
-  },
-  "Under 15": {
-    "partite": [],
-    "gironi": {}
-  },
-  "Under 13": {
-    "partite": [],
-    "gironi": {}
-  },
-  "2014/15": {
-    "partite": [],
-    "gironi": {}
-  },
-  "2016/17": {
-    "partite": [],
-    "gironi": {}
-  },
-  "Under 15 femminile": {
-    "partite": [],
-    "gironi": {}
-  },
-  "Under 13 femminile": {
-    "partite": [],
-    "gironi": {}
-  }
+  "Under 17": { "partite": [], "gironi": {} },
+  "Under 15": { "partite": [], "gironi": {} },
+  "Under 13": { "partite": [], "gironi": {} },
+  "2014/15": { "partite": [], "gironi": {} },
+  "2016/17": { "partite": [], "gironi": {} },
+  "Under 15 femminile": { "partite": [], "gironi": {} },
+  "Under 13 femminile": { "partite": [], "gironi": {} }
 }
