@@ -1,0 +1,31 @@
+
+/* Stili per l'editor SPRING CUP 2025 */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin: 20px 0;
+}
+
+input[type="text"], input[type="date"], input[type="time"] {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
