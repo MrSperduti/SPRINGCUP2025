@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor Avanzato Torneo</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    textarea { width: 100%; min-height: 40px; margin-top: 5px; }
+    .section { margin-top: 40px; }
+    .item { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; background: #fff; }
+    .item h4 { margin-top: 0; }
+    .actions button { margin-right: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="text-align:center">Editor Avanzato Torneo</h2>
+
+    <div class="section">
+      <h3>📂 Carica file dati.json</h3>
+      <input type="file" id="fileInput">
+    </div>
+
+    <div class="section">
+      <h3>📋 Seleziona Categoria</h3>
+      <select id="selectCategoria"></select>
+    </div>
+
+    <div class="section">
+      <h3>⚙️ Gestione Partite</h3>
+      <div id="listaPartite"></div>
+      <button onclick="aggiungiPartita()">➕ Aggiungi Nuova Partita</button>
+    </div>
+
+    <div class="section">
+      <h3>🏆 Gestione Finali</h3>
+      <div id="listaFinali"></div>
+      <button onclick="aggiungiFinale()">➕ Aggiungi Finale</button>
+    </div>
+
+    <div class="section">
+      <h3>👥 Gestione Gironi</h3>
+      <div id="listaGironi"></div>
+      <button onclick="aggiungiGirone()">➕ Aggiungi Girone</button>
+    </div>
+
+    <div class="section">
+      <button onclick="esporta()">💾 Esporta dati.json</button>
+    </div>
+  </div>
+
+  <script>
+    let dati = {};
+    let categoriaSelezionata = '';
+
+    document.getElementById("fileInput").addEventListener("change", e => {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        try {
+          dati = JSON.parse(event.target.result);
+          aggiornaCategorie();
+          alert("File caricato con successo!");
+        } catch (err) {
+          alert("Errore nel caricamento del file.");
+        }
+      };
+      reader.readAsText(e.target.files[0]);
+    });
+
+    function aggiornaCategorie() {
+      const select = document.getElementById("selectCategoria");
+      select.innerHTML = "";
+      Object.keys(dati).forEach(cat => {
+        const opt = document.createElement("option");
+        opt.value = cat;
+        opt.textContent = cat;
+        select.appendChild(opt);
+      });
+      if (select.options.length > 0) {
+        select.selectedIndex = 0;
+        categoriaSelezionata = select.value;
+        aggiornaVista();
+      }
+      select.onchange = () => {
+        categoriaSelezionata = select.value;
+        aggiornaVista();
+      };
+    }
+
+    function aggiornaVista() {
+      
+      renderPartite();
+
+      // Override renderPartite per raggruppare per giornata
+      function renderPartite() {
+        const container = document.getElementById("listaPartite");
+        container.innerHTML = "";
+        const partite = dati[categoriaSelezionata]?.partite || [];
+
+        // Raggruppa per giornata
+        const giornate = {};
+        partite.forEach((p, i) => {
+          const g = p.giornata || 0;
+          if (!giornate[g]) giornate[g] = [];
+          giornate[g].push({ partita: p, index: i });
+        });
+
+        Object.keys(giornate).sort((a, b) => a - b).forEach(g => {
+          const titolo = document.createElement("h4");
+          titolo.textContent = "Giornata " + g;
+          container.appendChild(titolo);
+
+          giornate[g].forEach(({ partita: p, index }) => {
+            const div = document.createElement("div");
+            div.className = "item";
+            const inputs = {
+              giornata: creaInput(p.giornata, "Giornata"),
+              squadraA: creaInput(p.squadraA, "Squadra A"),
+              squadraB: creaInput(p.squadraB, "Squadra B"),
+              data: creaInput(p.data, "Data"),
+              orario: creaInput(p.orario, "Orario"),
+              campo: creaInput(p.campo, "Campo"),
+              girone: creaInput(p.girone, "Girone"),
+              portiere: creaInput(p.portiere, "Miglior Portiere"),
+              giocatore: creaInput(p.giocatore, "Miglior Giocatore"),
+              marcatori: creaTextarea((p.marcatori || []).map(m => `${m.nome}:${m.gol}`).join(", "), "Marcatori")
+            };
+            Object.values(inputs).forEach(i => div.appendChild(i));
+            const actions = document.createElement("div");
+            actions.className = "actions";
+            actions.appendChild(creaBottoneTesto("💾 Salva", () => {
+              dati[categoriaSelezionata].partite[index] = {
+                giornata: parseInt(inputs.giornata.value),
+                squadraA: inputs.squadraA.value,
+                squadraB: inputs.squadraB.value,
+                data: inputs.data.value,
+                orario: inputs.orario.value,
+                campo: inputs.campo.value,
+                girone: inputs.girone.value,
+                portiere: inputs.portiere.value,
+                giocatore: inputs.giocatore.value,
+                marcatori: inputs.marcatori.value.split(",").map(m => {
+                  const [nome, gol] = m.trim().split(":");
+                  return { nome, gol: parseInt(gol) };
+                }).filter(m => m.nome && !isNaN(m.gol))
+              };
+              alert("Partita aggiornata.");
+              aggiornaVista();
+            }));
+            actions.appendChild(creaBottoneTesto("🗑️ Cancella", () => {
+              dati[categoriaSelezionata].partite.splice(index, 1);
+              aggiornaVista();
+            }));
+            div.appendChild(actions);
+            container.appendChild(div);
+          });
+        });
+      }
+    
+      renderFinali();
+      renderGironi();
+    }
+
+    function creaInput(value = "", placeholder = "") {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = placeholder;
+      input.value = value;
+      return input;
+    }
+
+    function creaTextarea(value = "", placeholder = "") {
+      const ta = document.createElement("textarea");
+      ta.placeholder = placeholder;
+      ta.value = value;
+      return ta;
+    }
+
+    function creaBottoneTesto(label, onclick) {
+      const btn = document.createElement("button");
+      btn.textContent = label;
+      btn.onclick = onclick;
+      return btn;
+    }
+
+    function renderPartite() {
+      const container = document.getElementById("listaPartite");
+      container.innerHTML = "";
+      const partite = dati[categoriaSelezionata]?.partite || [];
+      partite.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<h4>Partita ${index + 1}</h4>`;
+        const inputs = {
+          giornata: creaInput(p.giornata, "Giornata"),
+          squadraA: creaInput(p.squadraA, "Squadra A"),
+          squadraB: creaInput(p.squadraB, "Squadra B"),
+          data: creaInput(p.data, "Data"),
+          orario: creaInput(p.orario, "Orario"),
+          campo: creaInput(p.campo, "Campo"),
+          girone: creaInput(p.girone, "Girone"),
+          portiere: creaInput(p.portiere, "Miglior Portiere"),
+          giocatore: creaInput(p.giocatore, "Miglior Giocatore"),
+          marcatori: creaTextarea((p.marcatori || []).map(m => `${m.nome}:${m.gol}`).join(", "), "Marcatori")
+        };
+        Object.values(inputs).forEach(i => div.appendChild(i));
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        actions.appendChild(creaBottoneTesto("💾 Salva", () => {
+          dati[categoriaSelezionata].partite[index] = {
+            giornata: parseInt(inputs.giornata.value),
+            squadraA: inputs.squadraA.value,
+            squadraB: inputs.squadraB.value,
+            data: inputs.data.value,
+            orario: inputs.orario.value,
+            campo: inputs.campo.value,
+            girone: inputs.girone.value,
+            portiere: inputs.portiere.value,
+            giocatore: inputs.giocatore.value,
+            marcatori: inputs.marcatori.value.split(",").map(m => {
+              const [nome, gol] = m.trim().split(":");
+              return { nome, gol: parseInt(gol) };
+            }).filter(m => m.nome && !isNaN(m.gol))
+          };
+          alert("Partita aggiornata.");
+        }));
+        actions.appendChild(creaBottoneTesto("🗑️ Cancella", () => {
+          dati[categoriaSelezionata].partite.splice(index, 1);
+          aggiornaVista();
+        }));
+        div.appendChild(actions);
+        container.appendChild(div);
+      });
+    }
+
+    function renderFinali() {
+      const container = document.getElementById("listaFinali");
+      container.innerHTML = "";
+      const finali = dati[categoriaSelezionata]?.finali || [];
+      finali.forEach((f, index) => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<h4>${f.fase || 'Finale'} (${index + 1})</h4>`;
+        const inputs = {
+          fase: creaInput(f.fase, "Fase"),
+          squadraA: creaInput(f.squadraA, "Squadra A"),
+          squadraB: creaInput(f.squadraB, "Squadra B"),
+          data: creaInput(f.data, "Data"),
+          orario: creaInput(f.orario, "Orario"),
+          campo: creaInput(f.campo, "Campo"),
+          portiere: creaInput(f.portiere, "Miglior Portiere"),
+          giocatore: creaInput(f.giocatore, "Miglior Giocatore"),
+          marcatori: creaTextarea((f.marcatori || []).map(m => `${m.nome}:${m.gol}`).join(", "), "Marcatori")
+        };
+        Object.values(inputs).forEach(i => div.appendChild(i));
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        actions.appendChild(creaBottoneTesto("💾 Salva", () => {
+          dati[categoriaSelezionata].finali[index] = {
+            fase: inputs.fase.value,
+            squadraA: inputs.squadraA.value,
+            squadraB: inputs.squadraB.value,
+            data: inputs.data.value,
+            orario: inputs.orario.value,
+            campo: inputs.campo.value,
+            portiere: inputs.portiere.value,
+            giocatore: inputs.giocatore.value,
+            marcatori: inputs.marcatori.value.split(",").map(m => {
+              const [nome, gol] = m.trim().split(":");
+              return { nome, gol: parseInt(gol) };
+            }).filter(m => m.nome && !isNaN(m.gol))
+          };
+          alert("Finale aggiornata.");
+        }));
+        actions.appendChild(creaBottoneTesto("🗑️ Cancella", () => {
+          dati[categoriaSelezionata].finali.splice(index, 1);
+          aggiornaVista();
+        }));
+        div.appendChild(actions);
+        container.appendChild(div);
+      });
+    }
+
+    function renderGironi() {
+      const container = document.getElementById("listaGironi");
+      container.innerHTML = "";
+      const gironi = dati[categoriaSelezionata]?.gironi || {};
+      Object.entries(gironi).forEach(([nome, squadre]) => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `<h4>Girone ${nome}</h4>`;
+        const inputNome = creaInput(nome, "Nome Girone");
+        const inputSquadre = creaTextarea(squadre.join(", "), "Squadre separate da virgola");
+        div.appendChild(inputNome);
+        div.appendChild(inputSquadre);
+        const actions = document.createElement("div");
+        actions.className = "actions";
+        actions.appendChild(creaBottoneTesto("💾 Salva", () => {
+          delete gironi[nome];
+          gironi[inputNome.value] = inputSquadre.value.split(",").map(s => s.trim()).filter(Boolean);
+          aggiornaVista();
+        }));
+        actions.appendChild(creaBottoneTesto("🗑️ Cancella", () => {
+          delete gironi[nome];
+          aggiornaVista();
+        }));
+        div.appendChild(actions);
+        container.appendChild(div);
+      });
+    }
+
+    function aggiungiPartita() {
+      dati[categoriaSelezionata].partite.push({});
+      aggiornaVista();
+    }
+
+    function aggiungiFinale() {
+      dati[categoriaSelezionata].finali.push({});
+      aggiornaVista();
+    }
+
+    function aggiungiGirone() {
+      dati[categoriaSelezionata].gironi["Nuovo"] = [];
+      aggiornaVista();
+    }
+
+    function esporta() {
+      const blob = new Blob([JSON.stringify(dati, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "dati.json";
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>

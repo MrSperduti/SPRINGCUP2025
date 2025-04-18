@@ -1,47 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editor SPRING CUP 2025</title>
+  <title>Index</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <h1>Editor Torneo SPRING CUP 2025</h1>
-
-  <div>
-    <h2>Aggiungi o Modifica Partita</h2>
-    <form id="form-partita">
-      <label for="categoria">Categoria:</label>
-      <input type="text" id="categoria" placeholder="Es. Under 17">
-      <br>
-      <label for="data">Data:</label>
-      <input type="date" id="data">
-      <br>
-      <label for="orario">Orario:</label>
-      <input type="time" id="orario">
-      <br>
-      <label for="campo">Campo da gioco:</label>
-      <input type="text" id="campo" placeholder="Es. Stadio A">
-      <br>
-      <button type="submit">Aggiungi Partita</button>
-    </form>
+  <div class="container">
+    <img src="logo.png" alt="Logo SPRING CUP 2025" style="display:block;margin:0 auto 20px auto;max-width:200px;">
+<h1 style="text-align:center;">SPRING CUP 2025</h1><div id='categorie'></div>
   </div>
-
-  <div>
-    <h2>Aggiungi Girone</h2>
-    <form id="form-girone">
-      <label for="nome-girone">Nome Girone:</label>
-      <input type="text" id="nome-girone" placeholder="Es. Girone A">
-      <br>
-      <button type="submit">Aggiungi Girone</button>
-    </form>
-  </div>
-
-  <button id="save-data">Salva Dati JSON</button>
-  
-  <script src="editor.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
